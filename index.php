@@ -3,9 +3,7 @@
         <section class="frontindex">
             <div class="container frontindex-container">
                 <div class="frontindex-content">
-                    <span class="frontindex-tag">
-                        Everyday Carry Reimagined
-                    </span>
+                    
                     <h1>
                         Pack Smarter.
                         <br>
@@ -14,7 +12,7 @@
                     <p>
                         Thoughtfully designed bags that connect,
                         organize, and move with you.
-                        
+
 
                         Whether you're commuting to work,
                         attending classes,
