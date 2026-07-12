@@ -176,18 +176,6 @@ main{
     max-width: 520px;
     animation:fade left .8s ease;
 }
-.frontindex-tag{
-    display:inline-flex;
-    align-items:center;
-    padding:.7rem 1.4rem;
-    margin-bottom:1.5rem;
-    border-radius:999px;
-    background:#F7EAF2;
-    color:var(--accent-color);
-    font-family:var(--heading-font);
-    font-weight:600;
-    letter-spacing:.5px;
-}
 .frontindex-content h1{
     font-size: 4.3rem;
     line-height:1.05;
@@ -209,16 +197,7 @@ main{
     align-items:center;
     animation:fadeRight .8s ease;
 }
-.frontindex-image img{
-    width:100%;
-    max-width:500px;
-    object-fit:contain;
-    filter:drop-shadow(0 25px 40px rgba(0,0,0,.15));
-    transition:transform .4s ease;
-}
-.frontindex-image img:hover{
-    transform:translateY(-10px);
-}
+
 .frontindex::before{
     content:"";
     position:absolute;
@@ -370,4 +349,19 @@ main{
     padding:1rem;
     margin-top:.5rem;
     font-size:1rem;
+}
+.form_message{
+    text-align:center;
+    padding:.8rem;
+    border-radius:var(--radius-sm);
+    margin-bottom:1rem;
+    font-size:var(--small-font);
+}
+.form_message.success{
+    background:#e6f4ea;
+    color:#1e7e34;
+}
+.form_message.danger{
+    background:#fbe7e9;
+    color:var(--accent-color);
 }
