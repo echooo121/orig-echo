@@ -11,9 +11,7 @@
         <div class="container">
             <nav class="navbar">
                 <a href="index.php" class="nav__logo">
-                    <img src="assets/echo-logo.svg"
-                        alt="Echo System Logo"
-                        class="nav__logo-img">
+                    <img src="assets/echo-logo.svg" alt="Echo System Logo" class="nav__logo-img">
                 </a>
                 <a href="about.php" class="btn btn-secondary">
                             About us
@@ -21,3 +19,4 @@
             </nav>
         </div>
     </header>
+    <main>
