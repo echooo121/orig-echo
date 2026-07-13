@@ -17,14 +17,16 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         if($password === $user['password']){
             $_SESSION['email'] = $email;
             $_SESSION['user_type'] = $user['user_type'];
-
+            $_SESSION['first_name'] = $user['first_name'];
+            $_SESSION['last_name'] = $user['last_name'];
             if ($user['user_type'] == 'Admin') {
-                header('Location: admin/adminHome.php');
+                header('Location: adminHome.php');
+                die();
             } 
             else{
-                header('Location: buyer/home.php');
+                header('Location: buyerHome.php');
+                die();
             }
-            exit;
         } 
         else{
             $message = "Invalid email or password.";
@@ -50,7 +52,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php if (!empty($message)): ?>
                     <p class="form_message <?php echo $type; ?>"><?php echo htmlspecialchars($message); ?></p>
                 <?php endif; ?>
-                <form action="" method="POST" class="login-form">
+                <form action="login.php" method="POST" class="login_form">
                     <div class="input">
                         <input type="text" name="email" placeholder="Email" required>
                     </div>
