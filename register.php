@@ -15,7 +15,7 @@
 
                 <div class="form_row">
                     <div class="input">
-                       
+
                         <input type="text" name="first_name" placeholder="First Name" value="<?php echo isset($first_name) ? htmlspecialchars($first_name) : ''; ?>" required>
                     </div>
                     <div class="input">
@@ -34,9 +34,12 @@
                     <input type="text" name="address" placeholder="Full Address" value="<?php echo isset($address) ? htmlspecialchars($address) : ''; ?>" required>
                 </div>
 
-                <div class="input">
-                   
-                    <input type="text" name="contact" maxlength="10" pattern="[0-9]{10}" placeholder="Contact no." value="<?php echo isset($contact) ? htmlspecialchars($contact) : ''; ?>" required>
+                <div class="input" style="position:relative;">
+                    <span style="position:absolute; left:1.2rem; color:var(--text-color); pointer-events:none;">+63</span>
+                    <input type="text" name="contact" placeholder="contact" 
+                        style="padding-left:3.2rem;"
+                        value="<?php echo isset($contact) ? htmlspecialchars($contact) : ''; ?>" 
+                        maxlength="10" required>
                 </div>
 
                 <div class="form_row">
