@@ -5,6 +5,29 @@ if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'Admin') {
     header('Location: login.php');
     die();
 }
+//for audit
+$user = $_SESSION["user_id"];
+$user_name = $_SESSION["first_name"] . " " . $_SESSION["last_name"];
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['user_id'])) {
+    $userId = mysqli_real_escape_string($conn, $_POST['user_id']);
+    $newType = $_POST['new_type'];
+
+    $allowedTypes = ['Admin', 'Buyer'];
+    if (in_array($newType, $allowedTypes)) {
+        $sql = "UPDATE users SET user_type = '$newType' WHERE user_id = '$userId'";
+
+        if (mysqli_query($conn, $sql)) {
+
+            $action = "Changed user role";
+            $target = "User Table";
+            $data = "$userId set to $newType";
+
+            $sqlaudit = "INSERT INTO audit_log (user, user_name, action, target, data) VALUES ('$user', '$user_name', '$action', '$target', '$data')";
+            mysqli_query($conn, $sqlaudit);
+        }
+    }
+}
+
 require 'header.php';
 $filterType = isset($_POST['selectType']) ? $_POST['selectType'] : 'All';
 ?>
@@ -55,7 +78,7 @@ $filterType = isset($_POST['selectType']) ? $_POST['selectType'] : 'All';
                    echo "<td>" . htmlspecialchars($row['email']) . "</td>";
                    echo "<td>" . htmlspecialchars($row['user_type']) . "</td>";
                    echo "<td>
-                           <form action='update_role.php' method='POST' style='display:flex; gap:.5rem; justify-content:center;'>
+                           <form action='manage_users.php' method='POST' style='display:flex; gap:.5rem; justify-content:center;'>
                                <input type='hidden' name='user_id' value='" . htmlspecialchars($row['user_id']) . "'>
                                <select name='new_type'>
                                    <option value='Buyer' " . ($row['user_type']==='Buyer' ? 'selected' : '') . ">Buyer</option>
