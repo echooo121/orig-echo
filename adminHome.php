@@ -7,7 +7,7 @@ if (!isset($_SESSION['email']) || $_SESSION['user_type'] !== 'Admin') {
 require 'header.php';
 ?>
     <div class="container" style = "margin-top: 3rem;">
-        <h2 style = "text-align:center;">Welcome back, <b style = "color: var(--accent-color);"><?php echo htmlspecialchars($_SESSION['first_name'] . ' ' . $_SESSION['last_name']); ?></b>!</h2>
+        <h2 style = "text-align:center;">Welcome back, <b style = "color: var(--accent-color);"><?php echo strtoupper(htmlspecialchars($_SESSION['first_name'] . ' ' . $_SESSION['last_name'])); ?></b>!</h2>
         <p style = "text-align:center;">Monitor project metrics, manage inventory levels for modular bags, and <br>track user registrations from this central hub.</p>
     </div>
     <div class="container" style = "width: 50%;">
