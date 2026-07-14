@@ -1,12 +1,26 @@
 <?php
 session_start();
+if (isset($_SESSION['email'])) {
+    if ($_SESSION['user_type'] === 'Admin') {
+        header('Location: adminHome.php');
+    } else {
+        header('Location: buyerHome.php');
+    }
+    exit;
+}
+
 require('db(be).php');
 $message = "";
 $type = "";
 
+$savedEmail = $_COOKIE['email'] ?? '';
+$savedPassword = $_COOKIE['password'] ?? '';
+$rememberMe = isset($_COOKIE['email']);
+
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $password = $_POST['password'];
+    $remember = isset($_POST['remember']);
 
     $sql = "SELECT * FROM users WHERE email = '$email'";
     $result = mysqli_query($conn, $sql);
@@ -19,21 +33,31 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_type'] = $user['user_type'];
             $_SESSION['first_name'] = $user['first_name'];
             $_SESSION['last_name'] = $user['last_name'];
+            $_SESSION['user_id'] = $user['user_id'];
+
+            if ($remember){
+                setcookie('email', $email, time() + (86400 * 30));
+                setcookie('password', $password, time() + (86400 * 30));
+            } else {
+                setcookie('email', '', time() - 3600);
+                setcookie('password', '', time() - 3600);
+            }
+
             if ($user['user_type'] == 'Admin') {
                 header('Location: adminHome.php');
                 die();
-            } 
-            else{
+            } else {
                 header('Location: buyerHome.php');
                 die();
             }
-        } 
-        else{
+        } else {
             $message = "Invalid email or password.";
             $type = "danger";
+            $savedEmail = $email;
+            $savedPassword = $password;
+            $rememberMe = $remember;
         }
-    } 
-    else{
+    } else {
         $message = "Invalid email or password.";
         $type = "danger";
     }
@@ -54,17 +78,16 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php endif; ?>
                 <form action="login.php" method="POST" class="login_form">
                     <div class="input">
-                        <input type="text" name="email" placeholder="Email" required>
+                        <input type="text" name="email" placeholder="Email" value="<?php echo htmlspecialchars($savedEmail); ?>" required>
                     </div>
                     <div class="input">
-                        <input type="password" name="password" placeholder="Password" required>
+                        <input type="password" name="password" placeholder="Password" value="<?php echo htmlspecialchars($savedPassword); ?>" required>
                     </div>
                     <div class="login-options">
                         <label class="remember-me">
-                            <input type="checkbox" name="remember">
+                            <input type="checkbox" name="remember" <?php echo $rememberMe ? 'checked' : ''; ?>>
                             Remember Me
                         </label>
-                        <a href="forgot-password.php">Forgot password?</a>
                     </div>
                     <button type="submit" class="btn btn-primary login-btn">Login</button>
                     <p class="register_text">
