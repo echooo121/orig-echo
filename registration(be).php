@@ -8,7 +8,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $last_name = mysqli_real_escape_string($conn, $_POST['last_name']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $address = mysqli_real_escape_string($conn, $_POST['address']);
-    $contact = mysqli_real_escape_string($conn, $_POST['contact']);
+    $contact = "+63".mysqli_real_escape_string($conn, $_POST['contact']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $confirm_password = mysqli_real_escape_string($conn, $_POST['confirm_password']);
 
