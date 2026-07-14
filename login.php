@@ -1,5 +1,6 @@
 <?php
 session_start();
+require('db(be).php');
 if (isset($_SESSION['email'])) {
     if ($_SESSION['user_type'] === 'Admin') {
         header('Location: adminHome.php');
@@ -9,7 +10,6 @@ if (isset($_SESSION['email'])) {
     exit;
 }
 
-require('db(be).php');
 $message = "";
 $type = "";
 
@@ -42,13 +42,18 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                 setcookie('email', '', time() - 3600);
                 setcookie('password', '', time() - 3600);
             }
-
-            if ($user['user_type'] == 'Admin') {
-                header('Location: adminHome.php');
-                die();
-            } else {
-                header('Location: buyerHome.php');
-                die();
+            if($user['is_confirmed'] == 1){
+                if ($user['user_type'] == 'Admin') {
+                    header('Location: adminHome.php');
+                    die();
+                } else {
+                    header('Location: buyerHome.php');
+                    die();
+                }
+            }
+            else{
+                $message = "Confirm email first to log in";
+                $type = "danger";
             }
         } else {
             $message = "Invalid email or password.";
