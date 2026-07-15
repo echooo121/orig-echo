@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'Admin') {
 require ('header.php'); ?> 
     <div class="container">
         <div style="display:flex;justify-content: space-between; margin-top:3rem;">
-            <a href="items.php" class="btn btn-primary">
+            <a href="adminItems.php" class="btn btn-primary">
                 Back
             </a>
         </div> 
