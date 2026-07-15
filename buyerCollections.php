@@ -18,13 +18,18 @@ require 'header.php';
             <a href="buyerCart.php" style="font-family:var(--heading-font); font-weight:600; color:var(--text-light);">Cart</a>
             <a href="buyerAccount.php" style="font-family:var(--heading-font); font-weight:600; color:var(--text-light);">Account</a>
         </div>
+
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem;">
-            <h2>Collections</h2>
+            <h2><?php echo $filterType === 'All' ? 'Collections' : htmlspecialchars($filterType); ?></h2>
         </div>
 
         <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:2rem;">
             <?php
             $sql = "SELECT * FROM items";
+            if ($filterType !== 'All') {
+                $safeFilter = mysqli_real_escape_string($conn, $filterType);
+                $sql .= " WHERE category = '$safeFilter'";
+            }
             $result = mysqli_query($conn, $sql);
 
             if (mysqli_num_rows($result) === 0) {
