@@ -17,7 +17,7 @@ require 'header.php';
                     <span style = "margin-left: 1rem;"><?php include 'admin/assets/users.svg'; ?></span>
                     <span style = "margin-left: 3.5rem; font-size: 20pt;">Users</span>
                 </a>
-                <a href="items.php" class="admin_card">
+                <a href="adminItems.php" class="admin_card">
                     <span style = "margin-left: 1rem;"><?php include 'admin/assets/items.svg'; ?></span>
                     <span style = "margin-left: 3.5rem; font-size: 20pt;">Items</span>
                 </a>
