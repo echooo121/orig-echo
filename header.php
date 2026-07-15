@@ -13,7 +13,7 @@
                 <a href="index.php" class="nav__logo">
                     <img src="assets/echo-logo.svg" alt="Echo System Logo" class="nav__logo-img">
                 </a>
-                <a href="about.php" class="btn btn-secondary">
+                <a href="aboutus.php" class="btn btn-secondary">
                             About us
                 </a>
             </nav>
