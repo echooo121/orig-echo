@@ -1,4 +1,14 @@
-<?php require 'header.php'; ?>
+<?php 
+session_start();
+if (isset($_SESSION['email'])) {
+    if ($_SESSION['user_type'] === 'Admin') {
+        header('Location: adminHome.php');
+    } else {
+        header('Location: buyerHome.php');
+    }
+    exit;
+}
+require 'header.php'; ?>
     <section class="frontindex">
         <div class="container frontindex-container">
             <div class="frontindex-content">
