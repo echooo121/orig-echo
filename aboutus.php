@@ -21,9 +21,7 @@
 
         <div style="display:grid; grid-template-columns:repeat(2, 1fr); max-width:700px; margin:0 auto;">
             <div class="register_card" style="text-align:center; padding:2.5rem 2rem;">
-                <div style="width:90px; height:90px; background:var(--secondary-color); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 1.2rem auto;">
-                   
-                </div>
+                <img src="assets/img/yasona.jpg" style="width:90px; height:90px; object-fit:cover; background:var(--secondary-color); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 1.2rem auto;">
                 <h3 style="font-size:1.2rem; margin-bottom:.3rem;">Allyssa Kirsten Yasoña</h3>
                 <span style="display:inline-block; background:#F7EAF2; color:var(--accent-color); padding:.4rem 1rem; border-radius:999px; font-size:.8rem; font-weight:600;">Frontend Developer</span>
             </div>
