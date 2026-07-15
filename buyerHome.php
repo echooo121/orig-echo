@@ -18,17 +18,17 @@ require 'header.php';?>
         <h3 style="margin-top:2.5rem; margin-bottom:1.5rem;color:var(--text-light);">Categories</h3>
 
         <div class="frontindex-container" style="grid-template-columns:repeat(3, 1fr); gap:2rem;">
-            <a href="collections.php?category=Tote Bags" class="admin_card" style="background: #ffffff; flex-direction:column; align-items:center; justify-content:center; height:280px; padding:0;color: var(--text-color); font-size:var(--h2-font);text-align:center;">
+            <a href="buyerCollections.php?category=Tote Bags" class="admin_card" style="background: #ffffff; flex-direction:column; align-items:center; justify-content:center; height:280px; padding:0;color: var(--text-color); font-size:var(--h2-font);text-align:center;">
                 <span>
                     <img src=admin/uploads/2.jpg style = "width:300px; height:auto; border-radius: var(--radius-md);">
                     Tote Bags
                 </span>
             </a>
-            <a href="collections.php?category=Crossbody Bags" class="admin_card" style="background: #ffffff;flex-direction:column; align-items:center; justify-content:center; height:280px; padding:0;color: var(--text-color); font-size:var(--h2-font);text-align:center;">
+            <a href="buyerCollections.php?category=Crossbody Bags" class="admin_card" style="background: #ffffff;flex-direction:column; align-items:center; justify-content:center; height:280px; padding:0;color: var(--text-color); font-size:var(--h2-font);text-align:center;">
                 <img src=admin/uploads/3.jpg style = "width:300px; height:auto; border-radius: var(--radius-md);">
                 <span>Crossbody Bags</span>
             </a>
-            <a href="collections.php?category=Sling Bags" class="admin_card" style="background: #ffffff;flex-direction:column; align-items:center; justify-content:center; height:280px; padding:0;color: var(--text-color); font-size:var(--h2-font);text-align:center;">
+            <a href="buyerCollections.php?category=Sling Bags" class="admin_card" style="background: #ffffff;flex-direction:column; align-items:center; justify-content:center; height:280px; padding:0;color: var(--text-color); font-size:var(--h2-font);text-align:center;">
                 <img src=admin/uploads/10.jpg style = "width:300px; height:auto; border-radius: var(--radius-md);">
                 <span>Sling Bags</span>
             </a>
