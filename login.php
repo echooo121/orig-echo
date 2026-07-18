@@ -29,11 +29,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user = mysqli_fetch_assoc($result);
 
         if($password === $user['password']){
-            $_SESSION['email'] = $email;
-            $_SESSION['user_type'] = $user['user_type'];
-            $_SESSION['first_name'] = $user['first_name'];
-            $_SESSION['last_name'] = $user['last_name'];
-            $_SESSION['user_id'] = $user['user_id'];
 
             if ($remember){
                 setcookie('email', $email, time() + (86400 * 30));
@@ -44,9 +39,20 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             if($user['is_confirmed'] == 1){
                 if ($user['user_type'] == 'Admin') {
+                    $_SESSION['email'] = $email;
+                    $_SESSION['user_type'] = $user['user_type'];
+                    $_SESSION['first_name'] = $user['first_name'];
+                    $_SESSION['last_name'] = $user['last_name'];
+                    $_SESSION['user_id'] = $user['user_id'];
                     header('Location: adminHome.php');
                     die();
+                    
                 } else {
+                    $_SESSION['email'] = $email;
+                    $_SESSION['user_type'] = $user['user_type'];
+                    $_SESSION['first_name'] = $user['first_name'];
+                    $_SESSION['last_name'] = $user['last_name'];
+                    $_SESSION['user_id'] = $user['user_id'];
                     header('Location: buyerHome.php');
                     die();
                 }
